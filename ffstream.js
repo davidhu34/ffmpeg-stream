@@ -1,0 +1,10 @@
+const ffmpeg = require('fluent-ffmpeg')
+
+const command = new ffmpeg('/dev/video0')
+    .inputFormat('v4l2')
+    .inputFPS('25')
+    .format('mpegts')
+    .videoCodec('mpeg1video')
+    .size('640x480')
+    .videoBitrate('1000k')
+    .outputOptions('-bf 2')
