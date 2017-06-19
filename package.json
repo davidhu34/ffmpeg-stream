@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "fluent-ffmpeg": "^2.1.2",
-    "socket.io": "^2.0.3"
+    "socket.io": "^2.0.3",
+    "ws": "^3.0.0"
   }
 }
