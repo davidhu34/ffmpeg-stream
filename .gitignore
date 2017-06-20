@@ -4,6 +4,9 @@ npm-debug.log
 .DS_Store
 dist
 static
+*.jpg
+*.jpeg
+*.png
 *~
 *.pyc
 .grunt

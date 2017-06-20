@@ -7,27 +7,28 @@ module.exports = port => {
 	    perMessageDeflate: false
 	})
 
-	clients.on('connection', (socket, upgradeReq) => {
-		const { socket, headers } = (updateReq || socket.upgradeReq)
+	clients.on('connection', (client, upgradeReq) => {
+		const { socket, headers } = (upgradeReq || socket.upgradeReq)
 		const addr = socket.remoteAddress
 		clientSockets[addr] = {}
 		console.log(
 			'New Client Socket Connected:',addr,
 			headers['user-agent'],
-			'total: '+client.clients.length
+			'total: '+clients.clients.size
 		)
 
-		socket.on('close', (code, message) => {
+		client.on('close', (code, message) => {
 			delete clients[addr]
 			console.log(
 				'Client Socket Disconnect:',addr,
-				'total: '+client.clients.length
+				'total: '+clients.clients.length
 			)
 		})
 	})
-	
+
 	clients.broadcast = data => {
-		clients.clients.map( c => {
+		console.log(typeof(clients.clients), clients)
+		clients.clients.forEach( c => {
 			if (c.readyState === ws.OPEN)
 				c.send(data)
 		})

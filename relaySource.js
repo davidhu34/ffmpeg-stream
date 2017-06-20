@@ -1,11 +1,11 @@
 const http =  require('http')
 
-module.exports = (port, clients) => {
+module.exports = (port, secret, clients) => {
     const source = http.createServer( (req, res) => {
         const params = req.url.substr(1).split('/')
         const { remoteAddress, remotePort } = req.socket
 
-        if(params[0] !== STREAM_SECRET) {
+        if(params[0] !== secret) {
             console.log('Stream Failure:',remoteAddress+':'+remotePort)
             res.end()
         }
