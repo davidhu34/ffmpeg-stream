@@ -29,7 +29,7 @@ const execute = {
 		} else {
 			stream = ffmpegCmd(STREAM_OUTPUT_PATH, SNAPSHOT_PATH)
 			stream.run()
-			snapshot = setInterval( sendSnapshot, 1000)
+			snapshot = setInterval(sendSnapshot, 1000)
 			console.log('Streaming Start')
 		}
 	},

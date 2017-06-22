@@ -1,11 +1,15 @@
 const ws = require('ws')
 
-module.exports = port => {
+const { CLIENT_PORT } = require('./configs')
+
+module.exports = () => {
 	let clientSockets = {}
 	const clients = new ws.Server({
-	    port: port,
+	    port: CLIENT_PORT,
 	    perMessageDeflate: false
 	})
+	console.log('Serving Stream on ws://127.0.0.1:'+CLIENT_PORT)
+
 
 	clients.on('connection', (client, upgradeReq) => {
 		const { socket, headers } = (upgradeReq || socket.upgradeReq)
