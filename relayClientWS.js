@@ -27,7 +27,6 @@ module.exports = port => {
 	})
 
 	clients.broadcast = data => {
-		console.log(typeof(clients.clients), clients)
 		clients.clients.forEach( c => {
 			if (c.readyState === ws.OPEN)
 				c.send(data)

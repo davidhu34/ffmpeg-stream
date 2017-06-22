@@ -9,6 +9,7 @@ const streamProc = () => {
 		console.log('Stream Process End')
 		//streamProc()
 	})
-	setTimeout(() => stream.send('kill'), 4000)
+	//setTimeout(() => stream.send('kill'), 4000)
 }
-setInterval( streamProc, 6000)
+streamProc()
+//setInterval( streamProc, 6000)

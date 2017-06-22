@@ -1,6 +1,6 @@
 const ffmpeg = require('fluent-ffmpeg')
 
-module.exports = (stream_out, snapshot_out) => {
+module.exports = (stream_out, snapshot_file) => {
     const cmd = ffmpeg('/dev/video0')
     .inputFormat('v4l2')
     .inputFPS(25)
@@ -10,7 +10,7 @@ module.exports = (stream_out, snapshot_out) => {
     .size('640x480')
     .videoBitrate('1000k')
     .outputOptions('-bf 0')
-    .output(snapshot_out)
+    .output(__dirname+snapshot_file)
     //.outputOptions(['-f image2','-vf fps=1/5'])
     .outputOptions(['-update 1','-r 1'])
 
