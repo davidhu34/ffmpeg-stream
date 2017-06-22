@@ -1,4 +1,8 @@
 const ffmpegCmd = require('./ffmpegCommand')
+const {
+	STREAM_OUTPUT_PATH,
+	SNAPSHOT_OUTPUT_PATH
+} = require('./configs')
 
 let	stream = null
 let snapshot = null
@@ -7,8 +11,9 @@ const execute = {
 	init: () => {
 		if (stream || snapshot) {
 			console.log('Failed to Init (already streaming)')
+			process.abort()
 		} else {
-			stream = ffmpegCmd()
+			stream = ffmpegCmd(STREAM_OUTPUT_PATH, SNAPSHOT_OUTPUT_PATH)
 			stream.run()
 			snapshot = setInterval( () => {
 				console.log('stream~')

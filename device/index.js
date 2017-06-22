@@ -1,7 +1,7 @@
 const cp = require('child_process')
 
 const streamProc = () => {
-	const stream = cp.fork('streamControl')
+	const stream = cp.fork(__dirname+'/streamControl')
 	console.log('Stream Process Start')
 	stream.send('init')
 
@@ -9,6 +9,6 @@ const streamProc = () => {
 		console.log('Stream Process End')
 		//streamProc()
 	})
-	setTimeout(() => stream.send('kill'), 5000)
+	setTimeout(() => stream.send('kill'), 4000)
 }
 setInterval( streamProc, 6000)

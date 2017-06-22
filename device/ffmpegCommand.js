@@ -1,16 +1,16 @@
 const ffmpeg = require('fluent-ffmpeg')
 
-module.exports = () => {
+module.exports = (stream_out, snapshot_out) => {
     const cmd = ffmpeg('/dev/video0')
     .inputFormat('v4l2')
     .inputFPS(25)
-    .output('http://localhost:7688/yo')
+    .output(stream_out)
     .format('mpegts')
     .videoCodec('mpeg1video')
     .size('640x480')
     .videoBitrate('1000k')
     .outputOptions('-bf 0')
-    .output('output.jpg')
+    .output(snapshot_out)
     //.outputOptions(['-f image2','-vf fps=1/5'])
     .outputOptions(['-update 1','-r 1'])
 
@@ -22,5 +22,5 @@ module.exports = () => {
         console.log('ffmpeg end:', stderr, stdout)
     })
 
-    return cmd    
+    return cmd
 }
