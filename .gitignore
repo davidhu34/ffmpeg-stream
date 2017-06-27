@@ -1,8 +1,6 @@
 node_modules
 npm-debug.log
-relay/configs.js
-device/configs.js
-
+configs.js
 .DS_Store
 dist
 static
