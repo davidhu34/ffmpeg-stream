@@ -1,6 +1,4 @@
-const clients = require('./relayClientWS')()
-const source = require('./relaySource')(clients)
-const { faceDetect } = require('./api')
-
-const { SNAPSHOT_PATH } = require('./configs')
-setTimeout(() => faceDetect(SNAPSHOT_PATH), 4000)
+const clientWS = require('./relayClientWS')
+const clientIO = require('./relayClientIO')
+const source = require('./relaySource')(clientWS)
+const insights = require('./relayInsights')(clientIO)
