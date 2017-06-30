@@ -13,7 +13,7 @@ app.post('/stream', (req, res) => {
     res.connection.setTimeout(0)
     console.log('Stream Connected:', remoteAddress+':'+remotePort)
     req.on('data', data => {
-        clients.broadcast(data)
+        clientWS.broadcast(data)
     })
     req.on('end', () => {
         console.log('Stream Closed')

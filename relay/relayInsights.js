@@ -4,21 +4,23 @@ const express = require('express')
 const io = require('./relayClientIO')
 const { faceDetect } = require('./api')
 
-const { SNAPSHOT_PATH, FACE_SNAPSHOT_PATH, INSIGHT_INTERVAL } = require('./configs')
-
-const { INSIGHT_PORT, SNAPSHOT_PATH } = require('./configs')
+const { SNAPSHOT_PATH, INSIGHT_PORT, FACE_SNAPSHOT_PATH, INSIGHT_INTERVAL } = require('./configs')
 
 const app = express()
 let stateWithFace = {
-	face: {}
+	face: {},
 	image: {}
 }
 
-app.get('/facesnapshot', (req, res) => {
-})
+//app.get('/face', (req, res) => {
+//	res.send(stateWithFace.face)
+//})
 
-app.get('/facesnapshot', (req, res) => {
-
+app.get('/snapshot', (req, res) => {
+	/*fs.readFile(__dirname + SNAPSHOT_PATH, (err, data) => {
+		res.send(data)
+	})*/
+	res.sendFile(__dirname + SNAPSHOT_PATH)
 })
 
 app.listen(INSIGHT_PORT)
