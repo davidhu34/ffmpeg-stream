@@ -1,4 +1,3 @@
-const fs = require("fs")
 const qs = require('query-string')
 const request = require('request')
 
@@ -20,7 +19,7 @@ const faceDetectAPI = image => {
             headers: {
                 'Content-Type': 'application/octet-stream',
                 'Ocp-Apim-Subscription-Key': FACE_KEY,
-                'Content-Length': data.length
+                //'Content-Length': data.length
             },
             body: image
         }, (err, req, res) => {

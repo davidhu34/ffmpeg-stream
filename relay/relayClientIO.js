@@ -8,6 +8,4 @@ io.on('connection', socket => {
 	})
 })
 
-server.listen(CLIENT_IO_PORT)
-
 module.exports = io
